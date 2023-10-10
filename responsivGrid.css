@@ -3,83 +3,102 @@
   margin: 0;
   padding: 0;
 }
-img{
+
+img {
   width: 100%;
 }
-body{
+
+body {
   background-color: rgb(201, 201, 201);
   font-size: 18px;
   margin: 10px;
   overflow-x: hidden;
 }
+
 /* ----------------------------------------------- */
 
-.container{
+.container {
   display: grid;
   gap: 10px;
 }
 
 /* Header */
-.header{
+.header {
   display: grid;
-  grid-template-areas: 
-  'hero hero feature-1'
-  'hero hero feature-2';
+  grid-template-areas:
+    'hero hero feature-1'
+    'hero hero feature-2';
 }
-.hero{
+
+.hero {
   grid-area: hero;
   min-height: 300px;
-  background-image: url(panjang.png);
+  background-image: url(img/panjang.png);
   background-size: cover;
   background-position: center;
   padding: 50px;
 }
-.hero h2, .hero p{
+
+.hero h2,
+.hero p {
   display: none;
 }
-.features{
+
+.features {
   background-color: black;
   color: rgb(255, 241, 46);
   display: grid;
   /* justify-content: center;
   align-content: center; */
-  place-content: center; /*pengganti 2 diatas*/
+  place-content: center;
+  /*pengganti 2 diatas*/
   text-align: center;
   cursor: pointer;
 }
-.feature-1{
+
+.feature-1 {
   grid-area: feature-1;
-  background-image: url(kotak.png);
+  background-image: url(img/kotak.png);
   background-size: cover;
 }
-.feature-2{
+
+.feature-2 {
   grid-area: feature-2;
-  background-image: url(kotak.png);
+  background-image: url(img/kotak.png);
   background-size: cover;
 }
-.features .price{
-  font-size: 2em; /*2 kali settingan awal di body*/
+
+.features .price {
+  font-size: 2em;
+  /*2 kali settingan awal di body*/
   font-weight: 200;
 }
 
 /* navbar .*/
-.menu{
-  order: -1; /* biar urutan nya duluan dari pd header, jadi tampil diatas menu nya */
+.menu {
+  order: -1;
+  /* biar urutan nya duluan dari pd header, jadi tampil diatas menu nya */
   display: grid;
-  grid-template-columns: 1fr 2fr; /* 1 frame layar : 2 frame layar */
+  grid-template-columns: 1fr 2fr;
+  /* 1 frame layar : 2 frame layar */
   align-items: center;
 }
-.menu .brand{
+
+.menu .brand {
   font-size: 1.3em;
 }
-.menu ul{
+
+.menu ul {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 5px; /* membuat jarak diantara li nya */
+  gap: 5px;
+  /* membuat jarak diantara li nya */
 }
-.menu a{
-  display: block; /* biar bisa diklik satu kotak, nggak hanya tulisanya url nya*/
+
+.menu a {
+  display: block;
+  /* biar bisa diklik satu kotak, nggak hanya tulisanya url nya*/
   background-color: black;
   color: white;
   text-decoration: none;
@@ -90,15 +109,18 @@ body{
 }
 
 /* ------------------------------------------------------- */
-.menu-toggle{
-  display: none;     
-  flex-direction: column; /* flex defaultnya menjejer kesamping, ini dirubah biar ke bawah*/
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  /* flex defaultnya menjejer kesamping, ini dirubah biar ke bawah*/
   height: 20px;
   justify-content: space-between;
-  position: relative; /* gara2 ada input checkbox */
+  position: relative;
+  /* gara2 ada input checkbox */
   z-index: 2;
 }
-.menu-toggle input{
+
+.menu-toggle input {
   position: absolute;
   /* biar ukuran checkbox nya sama ukuran hamburger menu */
   width: 40px;
@@ -108,10 +130,13 @@ body{
   /* biar ukuran checkbox nya sama ukuran hamburger menu */
   opacity: 0;
   cursor: pointer;
-  z-index: 2; /* tambah banyak nilai nya maka komponen ini akan numpuk paling depan keliatan programmer */
+  z-index: 2;
+  /* tambah banyak nilai nya maka komponen ini akan numpuk paling depan keliatan programmer */
 }
-.menu-toggle span{
-  display: block;                /* span itu diplay nya inline jadi diganti */
+
+.menu-toggle span {
+  display: block;
+  /* span itu diplay nya inline jadi diganti */
   width: 28px;
   height: 3px;
   background-color: rgb(13, 70, 13);
@@ -120,25 +145,33 @@ body{
 }
 
 /* ------------------ hamburger menu animation ------------------ */
-.menu-toggle span:nth-child(2){
+.menu-toggle span:nth-child(2) {
   /* defaultnya ketika di transform poros putar nya ditengah */
-  transform-origin: 0 0; /* ini jdi porosnya di titik x=0, y=0 */
+  transform-origin: 0 0;
+  /* ini jdi porosnya di titik x=0, y=0 */
 }
-.menu-toggle span:nth-child(4){
+
+.menu-toggle span:nth-child(4) {
   /* defaultnya ketika di transform poros putar nya ditengah */
-  transform-origin: 0 100%; /* ini jdi porosnya di titik x=0, y=0 */
+  transform-origin: 0 100%;
+  /* ini jdi porosnya di titik x=0, y=0 */
 }
+
 /* ketika input di cek cari span nya dan lakukan aksi didlmnya */
 /* tanda ~ berarti saudara masih sama didalm div yg sama*/
-.menu-toggle input:checked ~ span:nth-child(2){
+.menu-toggle input:checked~span:nth-child(2) {
   background-color: white;
-  transform: rotate(45deg) translate(-1px, -1px); /* kalau gk pake translate gambarnya gk X simetris jadi disetting manual */
+  transform: rotate(45deg) translate(-1px, -1px);
+  /* kalau gk pake translate gambarnya gk X simetris jadi disetting manual */
 }
-.menu-toggle input:checked ~ span:nth-child(4){
+
+.menu-toggle input:checked~span:nth-child(4) {
   background-color: white;
-  transform: rotate(-45deg) translate(-1px, 0); ; 
+  transform: rotate(-45deg) translate(-1px, 0);
+  ;
 }
-.menu-toggle input:checked ~ span:nth-child(3){
+
+.menu-toggle input:checked~span:nth-child(3) {
   opacity: 0;
   transform: scale(0);
 }
@@ -146,71 +179,73 @@ body{
 
 
 /* responsive break poin */
-@media (max-width: 1024px){
-  .menu{
+@media (max-width: 1024px) {
+  .menu {
     order: inherit;
     grid-template-columns: 1fr;
   }
-  .menu .brand{
+
+  .menu .brand {
     display: none;
   }
-  .hero h2, .hero p{
+
+  .hero h2,
+  .hero p {
     display: block;
     background-color: black;
     color: white;
     padding: 5px;
     margin-bottom: 5px;
   }
-  .hero{
+
+  .hero {
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
   }
 }
-@media (max-width: 768px){
-  .menu{
+
+@media (max-width: 768px) {
+  .menu {
     order: -1;
     justify-items: end;
   }
-  .menu-toggle{
+
+  .menu-toggle {
     display: flex;
   }
-  .menu ul{
+
+  .menu ul {
     display: flex;
     position: absolute;
     right: 0;
     top: 0;
     width: 100%;
-    height: 100vh; /* satuan vh(view height) tinggi dari layar yg kita liat */
+    height: 100vh;
+    /* satuan vh(view height) tinggi dari layar yg kita liat */
     justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
     z-index: 1;
     background-color: rgb(0, 0, 0);
-    transform: translateY(-100%); /* ini akan menggeser keatas full sampai gk keliatan(kyk ngumpet dari layar) */
+    transform: translateY(-100%);
+    /* ini akan menggeser keatas full sampai gk keliatan(kyk ngumpet dari layar) */
     transition: all 1s;
     opacity: 0;
   }
-  .menu ul.slide{
+
+  .menu ul.slide {
     opacity: 1;
     transform: translateY(0);
   }
 }
-@media (max-width: 500px){
-  .header{
-    grid-template-areas: 
-    'hero'
-    'feature-1'
-    'feature-2';
+
+@media (max-width: 500px) {
+  .header {
+    grid-template-areas:
+      'hero'
+      'feature-1'
+      'feature-2';
   }
 }
-
-
-
-
-
-
-
-
-
